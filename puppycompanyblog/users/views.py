@@ -16,14 +16,14 @@ def register():
     form = RegistrationForm()
 
     if form.validate_on_submit():
-        user = User(email = form.username.data,
+        user = User(email = form.email.data,
                     username = form.username.data,
                     password = form.password.data)
         
         db.session.add(user)
         db.session.commit()
         flash('Thanks for registration!')
-        return redirect(url_for('user.login'))
+        return redirect(url_for('users.login'))
     
     return render_template('register.html', form = form)
 
@@ -42,7 +42,7 @@ def login():
             login_user(user)
             flash('Log in success!')
 
-            next = request.arg.get('next')
+            next = request.args.get('next')
 
             if next == None or not next[0] == "/":
                 next = url_for('core.index')

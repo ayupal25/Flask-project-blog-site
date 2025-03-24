@@ -8,6 +8,8 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = 'mysecret'
+
 # Database setup
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -22,7 +24,7 @@ Migrate(app, db)
 login_manager = LoginManager()
 
 login_manager.init_app(app)
-login_manager.login_view = 'user.login'
+login_manager.login_view = 'users.login'
 
 #Blueprint registration
 
