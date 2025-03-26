@@ -7,9 +7,9 @@
             <img src="{{url_for('static', filename='profile_pics/' + user.profile_image)}}" alt="Image not available">
         </div>
     </div>
-    {% for post in blog_post.items %}
+    {% for post in blog_posts.items %}
     <h2><a href="{{url_for('blog_posts.blog_post', blog_post_id = post.id)}}">{{post.title}}</a></h2>
-    Written By: <a href="{{url_for('users.user_post', username = post.author.username)}}">{{post.author}}</a>
+    Written By: <a href="{{url_for('users.user_posts', username = post.author.username)}}">{{post.author}}</a>
     <p class="text-muted">Published on: {{post.date.strftime("%Y-%m-%d")}}</p>
         <br>
         <p>{{post.text}}</p>
